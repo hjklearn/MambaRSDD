@@ -5,8 +5,8 @@
 ![](https://img.shields.io/github/repo-size/hjklearn/MambaRSDD?color=green)
 ![](https://img.shields.io/github/stars/hjklearn/MambaRSDD)
 [![Ask Me Anything!](https://img.shields.io/badge/Official%20-Yes-1abc9c.svg)](https://GitHub.com/hjklearn) 
-
-This repo contains an official PyTorch implementation of our paper: [MambaRSDD: Depth-Assisted Mamba with Contrastive Learning for Rail Surface Defect Detection.]!
+<br>
+- [This repo contains an official PyTorch implementation of our paper:] <br> - [MambaRSDD: Depth-Assisted Mamba with Contrastive Learning for Rail Surface Defect Detection.]!<br>
 
 
 
@@ -39,7 +39,7 @@ pip install numpy==1.26.3
 **Now training code for MambaRSDD is released!**
 
 ### 3.2 Prepare NEU RSDDS-AUG Datasets
-🎉🎉You can access the dataset in this paper:![https://img.shields.io/github/last-commit/Sunnyhaze/IML-ViT](https://ieeexplore.ieee.org/abstract/document/9769694)
+🎉🎉You can access the dataset in this paper:![(https://ieeexplore.ieee.org/abstract/document/9769694)]
 
 ### 3.3 Prepare the Pre-trained Weights
 🎉🎉The Pre-training weights will be published！
