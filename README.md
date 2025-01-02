@@ -43,7 +43,7 @@ pip install numpy==1.26.3
 🎉🎉You can access the dataset in this paper:![(https://ieeexplore.ieee.org/abstract/document/9769694)]
 
 ### 3.3 Prepare the Pre-trained Weights
-🎉🎉The Pre-training weights will be published！
+🎉🎉The pre-trained weights from VMamba-Tiny are initialized before the model training begins. You can obtain it from:[pth_vmamba_tiny](https://pan.baidu.com/s/1ky8Ye_NYLV4FtIMPziu2xw)
 
 ### 3.4 Model Training and Inference
 #### RGBD Rail Surface Defect Detection
