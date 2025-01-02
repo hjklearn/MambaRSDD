@@ -16,7 +16,7 @@ This repo contains an official PyTorch implementation of our paper: [MambaRSDD: 
 ## 2 Our environment
 Ubuntu LTS 20.04.1 + CUDA 11.8 + Python 3.10 + PyTorch 2.0.0
 
-#### The installation steps are as follows：
+### The installation steps are as follows：
 ```
 conda create -n mambarsdd python=3.10
 conda activate mambarsdd
