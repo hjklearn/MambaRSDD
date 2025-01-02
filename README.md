@@ -6,7 +6,8 @@
 ![](https://img.shields.io/github/stars/hjklearn/MambaRSDD)
 [![Ask Me Anything!](https://img.shields.io/badge/Official%20-Yes-1abc9c.svg)](https://GitHub.com/hjklearn) 
 <br>
-- ## This repo contains an official PyTorch implementation of our paper: <br> MambaRSDD: Depth-Assisted Mamba with Contrastive Learning for Rail Surface Defect Detection.
+- ## This repo contains an official PyTorch implementation of our paper: <br>
+- MambaRSDD: Depth-Assisted Mamba with Contrastive Learning for Rail Surface Defect Detection.
 
 
 
