@@ -68,12 +68,17 @@ python test.py
 
 ### 3.4 Visulize the training process of MambaRSDD
 Note that the loss and MAE values in the following figure have been normalized to the range of 0 to 1. 
-(https://github.com/hjklearn/MambaRSDD/blob/main/loss_curve.png)?raw=true)
+![Curve of training and validation loss and validation MAE versus epoch.](https://github.com/hjklearn/MambaRSDD/blob/main/loss_curve.png)?raw=true)
 
 ### 3.5 Visualize the results
+🎉🎉The performance results be published：
+Table I Evaluation metrics obtained from compared methods. The best results are shown in bold.
+![Table I. Comparison of results between methods on the NEU RSDSS-AUG dataset. Tot Params represents the total size of the model parameters, while Tra Params refers to the size of the parameters used for gradient updates.](https://github.com/hjklearn/MambaRSDD/blob/main/Table1.png)?raw=true)
+
 🎉🎉The visualization results be published：
 ![A comparison of the visualization results from several methods, with the method proposed in this paper highlighted in bold.](https://github.com/hjklearn/MambaRSDD/blob/main/Fig.%208.png)?raw=true)
-(https://github.com/hjklearn/MambaRSDD/blob/main/savefig_example.png)?raw=true)
+![Performance comparison of different methods in bar chart.](https://github.com/hjklearn/MambaRSDD/blob/main/savefig_example.png)?raw=true)
+
 
 ## 4 Acknowledgement
 The implement of this project is based on the codebases bellow. <br>
