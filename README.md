@@ -12,7 +12,8 @@
 
 
 ## 📰1 News 
-- [2025/01/02] 🎉🎉Please keep the updates coming！！！ 
+- 🚩[2025/01/02] 🎉🎉Please keep the updates coming！！！
+- 🚩The specific model structure schemes will be made publicly available once the article has been accepted. Stay tuned for updates!
 
 ## 2 Our environment
 Ubuntu LTS 20.04.1 + CUDA 11.8 + Python 3.10 + PyTorch 2.0.0
