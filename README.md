@@ -71,8 +71,8 @@ python test.py
 
 ### 3.4 Visulize the training process of MambaRSDD
 Note that the loss and MAE values in the following figure have been normalized to the range of 0 to 1. 
-![Curve of training and validation loss and validation MAE versus epoch.](https://github.com/hjklearn/MambaRSDD/blob/main/loss_curve.png)?raw=true)
 <img src="https://github.com/hjklearn/MambaRSDD/blob/main/loss_curve.png" width="500px">
+
 ### 3.5 Visualize the results
 #### 3.5.1 Visualize the results on RGBD-RSDD
 🎉🎉The performance results be published：
