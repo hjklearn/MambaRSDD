@@ -1,9 +1,9 @@
 # MambaRSDD: Depth-Assisted Mamba with Contrastive Learning for Rail Surface Defect Detection
 ![Powered by](https://img.shields.io/badge/Based_on-Pytorch-blue?logo=pytorch) 
 ![last commit](https://img.shields.io/github/last-commit/hjklearn/MambaRSDD)
-![GitHub](https://img.shields.io/github/license/hjklearn/IML-MambaRSDD?logo=license)
-![](https://img.shields.io/github/repo-size/hjklearn/MambaRSDD-ViT?color=green)
-![](https://img.shields.io/github/stars/hjklearn/MambaRSDD-ViT)
+![GitHub](https://img.shields.io/github/license/hjklearn/MambaRSDD?logo=license)
+![](https://img.shields.io/github/repo-size/hjklearn/MambaRSDD?color=green)
+![](https://img.shields.io/github/stars/hjklearn/MambaRSDD)
 [![Ask Me Anything!](https://img.shields.io/badge/Official%20-Yes-1abc9c.svg)](https://GitHub.com/hjklearn) 
 
 This repo contains an official PyTorch implementation of our paper: [MambaRSDD: Depth-Assisted Mamba with Contrastive Learning for Rail Surface Defect Detection.]!
