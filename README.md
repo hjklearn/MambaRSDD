@@ -81,6 +81,15 @@ Table I Evaluation metrics obtained from compared methods. The best results are 
 ![A comparison of the visualization results from several methods, with the method proposed in this paper highlighted in bold.](https://github.com/hjklearn/MambaRSDD/blob/main/Fig.%208.png)?raw=true)
 ![Performance comparison of different methods in bar chart.](https://github.com/hjklearn/MambaRSDD/blob/main/savefig_example.png)?raw=true)
 
+### 3.6 Validation MambaRSDD results on RGBD-RSDD.
+🎉🎉1.MambaRSDD weights are available:[MambaRSDD-RSDD-pth](https://pan.baidu.com/s/1P9rW7P5_-xSsfmOEuvPzew).By loading this weight, we can perform a performance test.
+
+🎉🎉2.The MambaRSDD prediction result is available:[Result-RSDD](https://pan.baidu.com/s/1xlMhdk0Pmh5cwsgn4F_Dtg). Through this link, we can proceed to get the prediction result.
+
+### 3.7 Validation MambaRSDD results on RGBD-SOD.
+🎉🎉1.MambaRSDD weights are available:[MambaRSDD-SOD-pth](https://pan.baidu.com/s/1Tul6bNQIlPWKmn4yhjZOSg).By loading this weight, we can perform a performance test.
+
+🎉🎉2.The MambaRSDD prediction result is available:[Result-SOD](https://pan.baidu.com/s/1Tul6bNQIlPWKmn4yhjZOSg). Through this link, we can proceed to get the prediction result.
 
 ## 4 Acknowledgement
 The implement of this project is based on the codebases bellow. <br>
