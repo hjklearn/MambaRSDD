@@ -36,16 +36,13 @@ pip install numpy==1.26.3
 ```
 
 ## 3 Quick Start 
-### 3.1 Training on your datasets
-**Now training code for MambaRSDD is released!**
-
-### 3.2 Prepare NEU RSDDS-AUG Datasets
+### 3.1 Prepare NEU RSDDS-AUG Datasets
 🎉🎉You can access the dataset in this paper:![(https://ieeexplore.ieee.org/abstract/document/9769694)]
 
-### 3.3 Prepare the Pre-trained Weights
+### 3.2 Prepare the Pre-trained Weights
 🎉🎉The pre-trained weights from VMamba-Tiny are initialized before the model training begins. You can obtain it from:[pth_vmamba_tiny](https://pan.baidu.com/s/1ky8Ye_NYLV4FtIMPziu2xw)
 
-### 3.4 Model Training and Inference
+### 3.3 Model Training and Inference
 #### RGBD Rail Surface Defect Detection
 To train MambaRSDD for Rail Surface Defect Detection on NEU RSDDS-AUG Datasets, use the following commands for different configurations:
 ```
@@ -68,7 +65,7 @@ If you only want to test the performance:
 cd MambaRSDD/SOD_Tool
 python test.py
 ```
-### 3.5 Visualize the results
+### 3.4 Visualize the results
 🎉🎉The results will be published！
 
 
