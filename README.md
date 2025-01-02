@@ -1,15 +1,13 @@
 # MambaRSDD: Depth-Assisted Mamba with Contrastive Learning for Rail Surface Defect Detection
-[![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1SMH0o2tDe2CLvvIACA1-Ej2lRNDBRfyj?usp=sharing)
 ![Powered by](https://img.shields.io/badge/Based_on-Pytorch-blue?logo=pytorch) 
-![last commit](https://img.shields.io/github/last-commit/Sunnyhaze/IML-ViT)
-![GitHub](https://img.shields.io/github/license/Sunnyhaze/IML-ViT?logo=license)
-![](https://img.shields.io/github/repo-size/sunnyhaze/IML-ViT?color=green)
-![](https://img.shields.io/github/stars/sunnyhaze/IML-ViT)
-[![Ask Me Anything!](https://img.shields.io/badge/Official%20-Yes-1abc9c.svg)](https://GitHub.com/Sunnyhaze) 
+![last commit](https://img.shields.io/github/last-commit/hjklearn/MambaRSDD)
+![GitHub](https://img.shields.io/github/license/hjklearn/IML-MambaRSDD?logo=license)
+![](https://img.shields.io/github/repo-size/hjklearn/MambaRSDD-ViT?color=green)
+![](https://img.shields.io/github/stars/hjklearn/MambaRSDD-ViT)
+[![Ask Me Anything!](https://img.shields.io/badge/Official%20-Yes-1abc9c.svg)](https://GitHub.com/hjklearn) 
 
-This repo contains an official PyTorch implementation of our paper: [IML-ViT: Benchmarking Image Manipulation Localization by Vision Transformer.](http://arxiv.org/abs/2307.14863)
+This repo contains an official PyTorch implementation of our paper: [MambaRSDD: Depth-Assisted Mamba with Contrastive Learning for Rail Surface Defect Detection.]!
 
-![overview](./images/overview.png)
 
 
 ## 📰1 News 
@@ -42,7 +40,7 @@ pip install numpy==1.26.3
 
 ## 3 Quick Start 
 ### 3.1 Training on your datasets
-**Now training code for IML-ViT is released!**
+**Now training code for MambaRSDD is released!**
 
 ### 3.2 Prepare NEU RSDDS-AUG Datasets
 🎉🎉You can access the dataset in this paper:![https://img.shields.io/github/last-commit/Sunnyhaze/IML-ViT](https://ieeexplore.ieee.org/abstract/document/9769694)
@@ -55,6 +53,7 @@ Still on Working...
 
 ### 3.5 Visualize the results
 🎉🎉The results will be published！
+
 
 
 ## 4 Acknowledgement
