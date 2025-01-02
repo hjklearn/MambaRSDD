@@ -44,9 +44,29 @@ pip install numpy==1.26.3
 ### 3.3 Prepare the Pre-trained Weights
 🎉🎉The Pre-training weights will be published！
 
-### 3.4 Start Training Script
-Still on Working...
-
+### 3.4 Model Training and Inference
+#### RGBD Rail Surface Defect Detection
+To train MambaRSDD for Rail Surface Defect Detection on NEU RSDDS-AUG Datasets, use the following commands for different configurations:
+```
+cd MambaRSDD/RSDD_Tool
+python train.py
+```
+If you only want to test the performance:
+```
+cd MambaRSDD/RSDD_Tool
+python test.py
+```
+#### RGBD Salient Object Detection
+To train MambaRSDD for Salient Object Detection on part of NJU2K+NLPR Datasets, use the following commands for different configurations:
+```
+cd MambaRSDD/SOD_Tool
+python train.py
+```
+If you only want to test the performance:
+```
+cd MambaRSDD/SOD_Tool
+python test.py
+```
 ### 3.5 Visualize the results
 🎉🎉The results will be published！
 
