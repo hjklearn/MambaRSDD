@@ -77,19 +77,19 @@ Note that the loss and MAE values in the following figure have been normalized t
 #### 3.5.1 Visualize the results on RGBD-RSDD
 🎉🎉The performance results be published：
 Table I Evaluation metrics obtained from compared methods. The best results are shown in bold.
-<img src="https://github.com/hjklearn/MambaRSDD/blob/main/Table1.png" width="800px">
+<img src="https://github.com/hjklearn/MambaRSDD/blob/main/Table1.png" width="700px">
 
 🎉🎉The visualization results be published：
-<img src="https://github.com/hjklearn/MambaRSDD/blob/main/Fig.%208.png" width="800px">
-<img src="https://github.com/hjklearn/MambaRSDD/blob/main/savefig_example.png" width="800px">
+<img src="https://github.com/hjklearn/MambaRSDD/blob/main/Fig.%208.png" width="700px">
+<img src="https://github.com/hjklearn/MambaRSDD/blob/main/savefig_example.png" width="700px">
 
 #### 3.5.2 Visualize the results on RGBD-SOD
 🎉🎉The performance results be published：
 Table IV Evaluation metrics obtained from compared methods. The best results are shown in bold.
-<img src="https://github.com/hjklearn/MambaRSDD/blob/main/Table4.png" width="800px">
+<img src="https://github.com/hjklearn/MambaRSDD/blob/main/Table4.png" width="700px">
 
 🎉🎉The visualization results be published：
-<img src="https://github.com/hjklearn/MambaRSDD/blob/main/SOD_bar.png" width="800px">
+<img src="https://github.com/hjklearn/MambaRSDD/blob/main/SOD_bar.png" width="700px">
 
 ### 3.6 Ablation experiments on RGBD-RSDD.
 🎉🎉As shown in Table II, omitting any component leads to a performance decline compared to the full model.
@@ -97,7 +97,7 @@ Table IV Evaluation metrics obtained from compared methods. The best results are
 🎉🎉Fig. 9 shows the prediction results for the four ablation configurations. While the full model’s predictions do not perfectly align with the ground truth—which is expected—it provides the most accurate defect localization.
 
 🎉🎉For a more intuitive visualization of Depth Anything V2, please refer to the four line plots in Fig. 10.
-<img src="https://github.com/hjklearn/MambaRSDD/blob/main/ablation.png" width="800px">
+<img src="https://github.com/hjklearn/MambaRSDD/blob/main/ablation.png" width="700px">
 
 🎉🎉As shown in Table III, most methods exhibited a noticeable performance improvement.
 <img src="https://github.com/hjklearn/MambaRSDD/blob/main/Table3.png" width="420px">
