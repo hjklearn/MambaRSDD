@@ -36,8 +36,9 @@ pip install numpy==1.26.3
 ```
 
 ## 3 Quick Start 
-### 3.1 Prepare NEU RSDDS-AUG Datasets
-🎉🎉You can access the dataset in this paper:![(https://ieeexplore.ieee.org/abstract/document/9769694)]
+### 3.1 Prepare Datasets
+🎉🎉1.You can access the RGBD NEU RSDDS-AUG dataset in this paper:![(https://ieeexplore.ieee.org/abstract/document/9769694)]
+🎉🎉2.You can access the RGBD SOD dataset:[RGB-D SOD Train and Test](https://pan.baidu.com/s/1tBqcD9wv46_nFfqJpXCnVQ) 
 
 ### 3.2 Prepare the Pre-trained Weights
 🎉🎉The pre-trained weights from VMamba-Tiny are initialized before the model training begins. You can obtain it from:[pth_vmamba_tiny](https://pan.baidu.com/s/1ky8Ye_NYLV4FtIMPziu2xw)
