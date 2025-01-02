@@ -17,7 +17,7 @@ This repo contains an official PyTorch implementation of our paper: [MambaRSDD: 
 Ubuntu LTS 20.04.1 + CUDA 11.8 + Python 3.10 + PyTorch 2.0.0
 
 #### The installation steps are as follows：
-'''
+```
 conda create -n mambarsdd python=3.10
 conda activate mambarsdd
 conda install cudatoolkit==11.8 -c nvidia
@@ -32,7 +32,7 @@ pip uninstall triton
 pip install -U --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/Triton-Nightly/pypi/simple/ triton-nightly
 pip uninstall numpy
 pip install numpy==1.26.3
-'''
+```
 
 ## 3 Quick Start 
 ### 3.1 Training on your datasets
