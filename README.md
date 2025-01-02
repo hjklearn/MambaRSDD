@@ -101,7 +101,7 @@ Table IV Evaluation metrics obtained from compared methods. The best results are
 ![Image](https://github.com/hjklearn/MambaRSDD/blob/main/ablation.png)?raw=true)
 
 🎉🎉As shown in Table III, most methods exhibited a noticeable performance improvement.
-![Image](https://github.com/hjklearn/MambaRSDD/blob/main/Table3.png)?raw=true)
+<img src="https://github.com/hjklearn/MambaRSDD/blob/main/Table3.png" width="210px">
 
 ### 3.7 Validation MambaRSDD results on RGBD-RSDD.
 🎉🎉1.MambaRSDD weights are available:[MambaRSDD-RSDD-pth](https://pan.baidu.com/s/1P9rW7P5_-xSsfmOEuvPzew).By loading this weight, we can perform a performance test.
