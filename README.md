@@ -65,10 +65,15 @@ If you only want to test the performance:
 cd MambaRSDD/SOD_Tool
 python test.py
 ```
-### 3.4 Visualize the results
+
+### 3.4 Visulize the training process of MambaRSDD
+Note that the loss and MAE values in the following figure have been normalized to the range of 0 to 1. 
+(https://github.com/hjklearn/MambaRSDD/blob/main/loss_curve.png)?raw=true)
+
+### 3.5 Visualize the results
 🎉🎉The visualization results be published：
 ![A comparison of the visualization results from several methods, with the method proposed in this paper highlighted in bold.](https://github.com/hjklearn/MambaRSDD/blob/main/Fig.%208.png)?raw=true)
-
+(https://github.com/hjklearn/MambaRSDD/blob/main/savefig_example.png)?raw=true)
 
 ## 4 Acknowledgement
 The implement of this project is based on the codebases bellow. <br>
