@@ -66,8 +66,8 @@ cd MambaRSDD/SOD_Tool
 python test.py
 ```
 ### 3.4 Visualize the results
-🎉🎉The results will be published！
-
+🎉🎉The visualization results be published：
+![A comparison of the visualization results from several methods, with the method proposed in this paper highlighted in bold.]([https://github.com/yourusername/yourrepo/blob/main/images/your-image.png](https://github.com/hjklearn/MambaRSDD/blob/main/Fig.%208.png)?raw=true)
 
 
 ## 4 Acknowledgement
