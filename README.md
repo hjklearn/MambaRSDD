@@ -16,27 +16,23 @@ This repo contains an official PyTorch implementation of our paper: [MambaRSDD: 
 ## 2 Our environment
 Ubuntu LTS 20.04.1 + CUDA 11.8 + Python 3.10 + PyTorch 2.0.0
 
-#### Step1. Creating virtual environments
+#### The installation steps are as follows：
+'''
 conda create -n mambarsdd python=3.10
 conda activate mambarsdd
-#### Step2. Installing torch, torchvision, cuda
 conda install cudatoolkit==11.8 -c nvidia
 conda install pytorch==2.0.0 torchvision==0.15.0 torchaudio==2.0.0 pytorch-cuda=11.8 -c pytorch -c nvidia
-#### Step3. Install packaging
 conda install packaging
-#### Step4. Entering the VMamba environment
 git clone https://github.com/MzeroMiko/VMamba.git
 cd VMamba
 pip3 install -r requirements.txt
 cd kernels/selective_scan
 pip3 install .
-#### Step5. Modifying triton version
 pip uninstall triton
 pip install -U --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/Triton-Nightly/pypi/simple/ triton-nightly
-#### Step6. Modifying numpy version
 pip uninstall numpy
 pip install numpy==1.26.3
-
+'''
 
 ## 3 Quick Start 
 ### 3.1 Training on your datasets
