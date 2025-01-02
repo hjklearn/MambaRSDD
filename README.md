@@ -74,7 +74,7 @@ Note that the loss and MAE values in the following figure have been normalized t
 ![Curve of training and validation loss and validation MAE versus epoch.](https://github.com/hjklearn/MambaRSDD/blob/main/loss_curve.png)?raw=true)
 
 ### 3.5 Visualize the results
-### 3.5.1 Visualize the results on RGBD-RSDD
+#### 3.5.1 Visualize the results on RGBD-RSDD
 🎉🎉The performance results be published：
 Table I Evaluation metrics obtained from compared methods. The best results are shown in bold.
 ![Table I. Comparison of results between methods on the NEU RSDSS-AUG dataset. Tot Params represents the total size of the model parameters, while Tra Params refers to the size of the parameters used for gradient updates.](https://github.com/hjklearn/MambaRSDD/blob/main/Table1.png)?raw=true)
@@ -83,7 +83,7 @@ Table I Evaluation metrics obtained from compared methods. The best results are 
 ![A comparison of the visualization results from several methods, with the method proposed in this paper highlighted in bold.](https://github.com/hjklearn/MambaRSDD/blob/main/Fig.%208.png)?raw=true)
 ![Performance comparison of different methods in bar chart.](https://github.com/hjklearn/MambaRSDD/blob/main/savefig_example.png)?raw=true)
 
-### 3.5.2 Visualize the results on RGBD-SOD
+#### 3.5.2 Visualize the results on RGBD-SOD
 🎉🎉The performance results be published：
 Table IV Evaluation metrics obtained from compared methods. The best results are shown in bold.
 ![Table IV. Comparison of results between methods on the NJU2K/NLPR/STERE dataset. Tot Params represents the total size of the model parameters, while Tra Params refers to the size of the parameters used for gradient updates.](https://github.com/hjklearn/MambaRSDD/blob/main/Table4.png)?raw=true)
@@ -91,12 +91,21 @@ Table IV Evaluation metrics obtained from compared methods. The best results are
 🎉🎉The visualization results be published：
 ![Performance comparison of different methods in bar chart.](https://github.com/hjklearn/MambaRSDD/blob/main/SOD_bar.png)?raw=true)
 
-### 3.6 Validation MambaRSDD results on RGBD-RSDD.
+
+### 3.6 Ablation experiments on RGBD-RSDD.
+🎉🎉As shown in Table II, omitting any component leads to a performance decline compared to the full model.
+
+🎉🎉Fig. 9 shows the prediction results for the four ablation configurations. While the full model’s predictions do not perfectly align with the ground truth—which is expected—it provides the most accurate defect localization.
+
+🎉🎉For a more intuitive visualization of Depth Anything V2, please refer to the four line plots in Fig. 10.
+[Image](https://github.com/hjklearn/MambaRSDD/blob/main/ablation.png)?raw=true)
+
+### 3.7 Validation MambaRSDD results on RGBD-RSDD.
 🎉🎉1.MambaRSDD weights are available:[MambaRSDD-RSDD-pth](https://pan.baidu.com/s/1P9rW7P5_-xSsfmOEuvPzew).By loading this weight, we can perform a performance test.
 
 🎉🎉2.The MambaRSDD prediction result is available:[Result-RSDD](https://pan.baidu.com/s/1xlMhdk0Pmh5cwsgn4F_Dtg). Through this link, we can proceed to get the prediction result.
 
-### 3.7 Validation MambaRSDD results on RGBD-SOD.
+### 3.8 Validation MambaRSDD results on RGBD-SOD.
 🎉🎉1.MambaRSDD weights are available:[MambaRSDD-SOD-pth](https://pan.baidu.com/s/1Tul6bNQIlPWKmn4yhjZOSg).By loading this weight, we can perform a performance test.
 
 🎉🎉2.The MambaRSDD prediction result is available:[Result-SOD](https://pan.baidu.com/s/1Tul6bNQIlPWKmn4yhjZOSg). Through this link, we can proceed to get the prediction result.
