@@ -50,7 +50,7 @@ pip install numpy==1.26.3
 To train MambaRSDD for Rail Surface Defect Detection on NEU RSDDS-AUG Datasets, use the following commands for different configurations:
 ```
 cd MambaRSDD/RSDD_Tool
-python train.py
+python train_RGBT.py
 ```
 If you only want to test the performance:
 ```
