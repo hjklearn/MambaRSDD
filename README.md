@@ -117,5 +117,6 @@ The implement of this project is based on the codebases bellow. <br>
 - [BBS-Net](https://github.com/zyjwuyan/BBS-Net) <br>
 - [VMamba](https://github.com/MzeroMiko/VMamba) <br>
 - [Depth-Anything-V2](https://github.com/DepthAnything/Depth-Anything-V2) <br>
+- [FHENet](https://github.com/hjklearn/Rail-Defect-Detection) <br>
 
 If you find this project helpful, Please also cite codebases above.
