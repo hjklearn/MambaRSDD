@@ -69,12 +69,8 @@ cd MambaRSDD/SOD_Tool
 python test.py
 ```
 
-### 3.4 Visulize the training process of MambaRSDD
- 
-<img src="https://github.com/hjklearn/MambaRSDD/blob/main/loss_curve.png" width="500px">
-
-### 3.5 Visualize the results
-#### 3.5.1 Visualize the results on RGBD-RSDD
+### 3.4 Visualize the results
+#### 3.4.1 Visualize the results on RGBD-RSDD
 🎉🎉The performance results be published：
 Table I Evaluation metrics obtained from compared methods. The best results are shown in bold.
 <img src="https://github.com/hjklearn/MambaRSDD/blob/main/Table1.png" width="700px">
@@ -83,7 +79,7 @@ Table I Evaluation metrics obtained from compared methods. The best results are 
 <img src="https://github.com/hjklearn/MambaRSDD/blob/main/Fig.%208.png" width="700px">
 <img src="https://github.com/hjklearn/MambaRSDD/blob/main/savefig_example.png" width="700px">
 
-#### 3.5.2 Visualize the results on RGBD-SOD
+#### 3.4.2 Visualize the results on RGBD-SOD
 🎉🎉The performance results be published：
 Table IV Evaluation metrics obtained from compared methods. The best results are shown in bold.
 <img src="https://github.com/hjklearn/MambaRSDD/blob/main/Table4.png" width="700px">
@@ -91,7 +87,7 @@ Table IV Evaluation metrics obtained from compared methods. The best results are
 🎉🎉The visualization results be published：
 <img src="https://github.com/hjklearn/MambaRSDD/blob/main/SOD_bar.png" width="700px">
 
-### 3.6 Ablation experiments on RGBD-RSDD.
+### 3.5 Ablation experiments on RGBD-RSDD.
 🎉🎉As shown in Table II, omitting any component leads to a performance decline compared to the full model.
 
 🎉🎉Fig. 9 shows the prediction results for the four ablation configurations. While the full model’s predictions do not perfectly align with the ground truth—which is expected—it provides the most accurate defect localization.
@@ -102,12 +98,12 @@ Table IV Evaluation metrics obtained from compared methods. The best results are
 🎉🎉As shown in Table III, most methods exhibited a noticeable performance improvement.
 <img src="https://github.com/hjklearn/MambaRSDD/blob/main/Table3.png" width="420px">
 
-### 3.7 Validation MambaRSDD results on RGBD-RSDD.
+### 3.6 Validation MambaRSDD results on RGBD-RSDD.
 🎉🎉1.MambaRSDD weights are available:[MambaRSDD-RSDD-pth](https://pan.baidu.com/s/1P9rW7P5_-xSsfmOEuvPzew).By loading this weight, we can perform a performance test.
 
 🎉🎉2.The MambaRSDD prediction result is available:[Result-RSDD](https://pan.baidu.com/s/1xlMhdk0Pmh5cwsgn4F_Dtg). Through this link, we can proceed to get the prediction result.
 
-### 3.8 Validation MambaRSDD results on RGBD-SOD.
+### 3.7 Validation MambaRSDD results on RGBD-SOD.
 🎉🎉1.MambaRSDD weights are available:[MambaRSDD-SOD-pth](https://pan.baidu.com/s/1Tul6bNQIlPWKmn4yhjZOSg).By loading this weight, we can perform a performance test.
 
 🎉🎉2.The MambaRSDD prediction result is available:[Result-SOD](https://pan.baidu.com/s/1Tul6bNQIlPWKmn4yhjZOSg). Through this link, we can proceed to get the prediction result.
