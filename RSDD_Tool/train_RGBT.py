@@ -52,7 +52,6 @@ test_dataloader = DataLoader(ValDatasets,batch_size=batchsize, shuffle=True, num
 
 net = Depth_Mamba()
 net = net.cuda()
-# net.load_state_dict(torch.load('/media/yuride/date/Mamba_SRDD/Pth/DepthMamba_Fulltiny_CLIP_path2024_12_08_19_27_best.pth'))   ########gaiyixia
 
 ################################################################################################################
 model = 'MambaRSDD_√L1_√L2_√L3_√L4_√L5_path' + time.strftime("%Y_%m_%d_%H_%M")
