@@ -84,9 +84,6 @@ Table I Evaluation metrics obtained from compared methods. The best results are 
 Table IV Evaluation metrics obtained from compared methods. The best results are shown in bold.
 <img src="https://github.com/hjklearn/MambaRSDD/blob/main/Table4.png" width="700px">
 
-🎉🎉The visualization results be published：
-<img src="https://github.com/hjklearn/MambaRSDD/blob/main/SOD_bar.png" width="700px">
-
 ### 3.5 Ablation experiments on RGBD-RSDD.
 🎉🎉As shown in Table II, omitting any component leads to a performance decline compared to the full model.
 
