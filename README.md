@@ -96,14 +96,14 @@ Table IV Evaluation metrics obtained from compared methods. The best results are
 <img src="https://github.com/hjklearn/MambaRSDD/blob/main/loss.png" width="700px">
 
 ### 3.6 Validation MambaRSDD results on RGBD-RSDD.
-🎉🎉1.MambaRSDD weights are available:[MambaRSDD-RSDD-pth](https://pan.baidu.com/s/1P9rW7P5_-xSsfmOEuvPzew).By loading this weight, we can perform a performance test.
+🎉🎉1.MambaRSDD weights are available:[MambaRSDD-RSDD-pth](https://pan.baidu.com/s/1gU1ffTiJfwJ-nJHai3f2DQ).By loading this weight, we can perform a performance test.
 
-🎉🎉2.The MambaRSDD prediction result is available:[Result-RSDD](https://pan.baidu.com/s/1xlMhdk0Pmh5cwsgn4F_Dtg). Through this link, we can proceed to get the prediction result.
+🎉🎉2.The MambaRSDD prediction result is available:[Result-RSDD](https://pan.baidu.com/s/18CvxDmgsSPNYNdlIE1agfQ). Through this link, we can proceed to get the prediction result.
 
 ### 3.7 Validation MambaRSDD results on RGBD-SOD.
-🎉🎉1.MambaRSDD weights are available:[MambaRSDD-SOD-pth](https://pan.baidu.com/s/1Tul6bNQIlPWKmn4yhjZOSg).By loading this weight, we can perform a performance test.
+🎉🎉1.MambaRSDD weights are available:[MambaRSDD-SOD-pth](https://pan.baidu.com/s/1oXx7G3Mfe06sG8KG71dmpA).By loading this weight, we can perform a performance test.
 
-🎉🎉2.The MambaRSDD prediction result is available:[Result-SOD](https://pan.baidu.com/s/1Tul6bNQIlPWKmn4yhjZOSg). Through this link, we can proceed to get the prediction result.
+🎉🎉2.The MambaRSDD prediction result is available:[Result-SOD](https://pan.baidu.com/s/1ErGMOn5bFdvs7wlSBHWs0Q). Through this link, we can proceed to get the prediction result.
 
 ## 4 Acknowledgement
 The implement of this project is based on the codebases bellow. <br>
