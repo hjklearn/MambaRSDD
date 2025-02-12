@@ -76,7 +76,7 @@ Table I Evaluation metrics obtained from compared methods. The best results are 
 <img src="https://github.com/hjklearn/MambaRSDD/blob/main/Table1.png" width="700px">
 
 🎉🎉The visualization results be published：
-<img src="https://github.com/hjklearn/MambaRSDD/blob/main/Fig.%208.png" width="700px">
+<img src="https://github.com/hjklearn/MambaRSDD/blob/main/fig8.png" width="700px">
 <img src="https://github.com/hjklearn/MambaRSDD/blob/main/savefig_example.png" width="700px">
 
 #### 3.4.2 Visualize the results on RGBD-SOD
