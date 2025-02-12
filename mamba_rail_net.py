@@ -3,7 +3,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 from VMamba.classification.models.vmamba import vmamba_tiny_s1l8, vmamba_small_s2l15
 # from MambaVision.mambavision.models.mamba_vision import mamba_vision_S
-
+# import sys
+# sys.path.append('/root/autodl-tmp/MambaRSDD/MambaRSDD/')
 
 class ASPP(nn.Module):
     def __init__(self, in_channel=512, depth=256):
@@ -43,6 +44,7 @@ class ASPP(nn.Module):
 
         return net
 
+    
 
 
 class Decoer(nn.Module):
@@ -98,6 +100,7 @@ class Decoer(nn.Module):
         return cat1
 
 
+
 class Adfusion(nn.Module):
     def __init__(self, input_channel1, input_channel2):
         super().__init__()
@@ -109,17 +112,6 @@ class Adfusion(nn.Module):
         self.relu = nn.ReLU()
         self.sigmoid = nn.Sigmoid()
 
-        self.conv31 = nn.Sequential(nn.Conv2d(input_channel2, input_channel2, kernel_size=3, padding=1),
-                                    nn.BatchNorm2d(input_channel2),
-                                    nn.ReLU())
-        self.conv32 = nn.Sequential(nn.Conv2d(input_channel2, input_channel2, kernel_size=3, padding=1),
-                                    nn.BatchNorm2d(input_channel2),
-                                    nn.ReLU())
-        self.conv33 = nn.Sequential(nn.Conv2d(input_channel2, input_channel2, kernel_size=3, padding=1),
-                                    nn.BatchNorm2d(input_channel2),
-                                    nn.ReLU())
-        
-
     def forward(self, f0, f1):
 
         f1 = self.conv(f1)
@@ -127,33 +119,48 @@ class Adfusion(nn.Module):
         b0, c0, h0, w0 = f0.size()
         f1 = F.interpolate(input=f1, scale_factor=h0//h1, mode='bilinear', align_corners=True)
 
-        max_0, _ = torch.max(f0, dim=1, keepdim=True)
-        max_1, _ = torch.max(f1, dim=1, keepdim=True)
+        max_0,_ = torch.max(f0, dim=1, keepdim=True)
+        max_1,_ = torch.max(f1, dim=1, keepdim=True)
         add_max = max_0 + max_1
         add_max = self.sigmoid(add_max)
         f0 = f0 * add_max
         f1 = f1 * add_max
 
         mul_f = f0 * f1
-        f1 = self.conv31(self.relu(f1 - mul_f))
-        f0 = self.conv32(self.relu(f0 - mul_f))
+#         f1_new = self.conv31(self.relu(f1 - mul_f))
+#         f0_new = self.conv32(self.relu(f0 - mul_f))
 
-        out = self.conv33(f1 + f0 + mul_f)
+#         out = self.conv33(f1_new + f0_new + mul_f)
+        out = mul_f + f0 + f1
 
         return out
+
 
 
 class Depth_Mamba(nn.Module):
     def __init__(self):
         super().__init__()
-
-        self.rgb = vmamba_tiny_s1l8()
+        
+        self.rgb = vmamba_tiny_s1l8()     
         for name, parameter in self.rgb.named_parameters():
-            parameter.requires_grad = False
+            if 'fitune' in name:
+                parameter.requires_grad = True
+            # if 'mlp' in name:
+            #     pass
+            else:
+                parameter.requires_grad = False
+         
+               
         self.dep = vmamba_tiny_s1l8()
         for name, parameter in self.dep.named_parameters():
-            parameter.requires_grad = False
+            if 'fitune' in name:
+                parameter.requires_grad = True
+            # if 'mlp' in name:
+            #     pass
+            else:
+                parameter.requires_grad = False
 
+                
 
         self.conv1 = nn.Sequential(nn.Conv2d(96, 48, 1),
                                    nn.Upsample(scale_factor=2, align_corners=False, mode='bilinear'),
@@ -196,10 +203,11 @@ class Depth_Mamba(nn.Module):
         self.adfusiond2 = Adfusion(384, 192)
         self.adfusiond1 = Adfusion(192, 96)
         
+                                    
 
     def forward(self, rgb, dep):
-        # print('dep',dep.shape)
-        dep = torch.cat((dep, dep, dep), dim=1)
+       
+        # dep = torch.cat((dep, dep, dep), dim=1)
         rgb1, rgb2, rgb3, rgb4, rgb5 = self.rgb(rgb)
         dep1, dep2, dep3, dep4, dep5 = self.dep(dep)
 
@@ -233,17 +241,15 @@ class Depth_Mamba(nn.Module):
         out_f = self.decoder_f(add1, add2, add3, add4)
         sal_finally = self.conv1(out_f)
 
-        rgb_list = [rgb4, rgb5]
-        dep_list = [dep4, dep5]
 
-        return sal_finally, rgb_list, dep_list
+        return sal_finally
 
 if __name__ == '__main__':
     r = torch.rand(2, 3, 320, 320).cuda()
     d = torch.rand(2, 3, 320, 320).cuda()
 
     net = Depth_Mamba().cuda()
-    sal_finally, rgb_list, dep_list = net(r, d)
+    sal_finally = net(r, d)
 
     a = torch.randn(1, 3, 256, 256).cuda()
     b = torch.randn(1, 3, 256, 256).cuda()
@@ -251,5 +257,7 @@ if __name__ == '__main__':
 
     CalParams(net, a, b)
     print('Total params % .2fM' % (sum(p.numel() for p in net.parameters()) / 1000000.0))
+
+
 
 
