@@ -5,7 +5,10 @@ import copy
 from functools import partial
 from typing import Optional, Callable, Any
 from collections import OrderedDict
-
+import sys
+sys.path.append('/root/autodl-tmp/MambaRSDD/MambaRSDD/')
+import numpy as np
+from pytorch_wavelets import DWTForward, DWTInverse
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -1152,6 +1155,122 @@ class SS2D(nn.Module, SS2Dv0, SS2Dv2, SS2Dv3, SS2Dm0):
             self.__initv2__(**kwargs)
 
 
+# =====================================================================
+class SeparableConv2d(nn.Module):
+    def __init__(self, in_channels, out_channels, kernel_size, dilation=1):
+        super(SeparableConv2d, self).__init__()
+   
+        self.depthwise_conv = nn.Conv2d(in_channels, in_channels, kernel_size=kernel_size, stride=1, padding=dilation, dilation=dilation, groups=in_channels)
+        
+        self.pointwise_conv = nn.Conv2d(in_channels, out_channels, kernel_size=1, stride=1)
+
+    def forward(self, x):
+        x = self.depthwise_conv(x)
+        x = self.pointwise_conv(x)
+        return x
+
+    
+class ASPP(nn.Module):
+    def __init__(self, in_channels, out_channels):
+        super(ASPP, self).__init__()
+
+        self.conv_1x1 = nn.Conv2d(in_channels, out_channels, kernel_size=1, stride=1, padding=0)
+        
+        self.conv_3x3_1 = SeparableConv2d(in_channels, out_channels, kernel_size=3, dilation=3)
+        self.conv_3x3_2 = SeparableConv2d(in_channels, out_channels, kernel_size=3, dilation=6)
+        self.conv_3x3_3 = SeparableConv2d(in_channels, out_channels, kernel_size=3, dilation=9)
+        self.conv_1 = nn.Conv2d(out_channels, 4 * out_channels, kernel_size=1, stride=1, padding=0)
+  
+    def forward(self, x):
+       
+        aa =  DWTForward(J=1, mode='zero', wave='db3').cuda()
+        yl, yh = aa(x)
+        yh_out = yh[0]
+        ylh = yh_out[:,:,0,:,:]
+        yhl = yh_out[:,:,1,:,:]
+        yhh = yh_out[:,:,2,:,:]
+        
+        x_1x1 = self.conv_1x1(yl)
+        x_3x3_1 = self.conv_3x3_1(ylh)
+        x_3x3_2 = self.conv_3x3_2(yhl)
+        x_3x3_3 = self.conv_3x3_3(yhh)
+
+        out = torch.stack([x_3x3_1, x_3x3_2, x_3x3_3], dim=2)
+        rec_yh = []
+        rec_yh.append(out)
+
+        ifm = DWTInverse(wave='db3', mode='zero').cuda()
+        Y = ifm((x_1x1, rec_yh))
+        Y = self.conv_1(Y)
+
+        out = Y + x
+
+        return out
+    
+    
+# ===============================================================================    
+class Adapter(nn.Module):
+    def __init__(self, input_dim, reduction_ratio=2):
+        super(Adapter, self).__init__()
+        self.down_proj = nn.Linear(input_dim, input_dim // reduction_ratio)  # 降维
+        self.up_proj = nn.Linear(input_dim // reduction_ratio, input_dim)    # 升维
+        self.activation = nn.ReLU()  # 激活函数
+
+    def forward(self, x):
+        residual = x  # 保留原始输入
+        x = x.permute(0, 2, 3, 1)
+        x = self.down_proj(x)  # 降维
+        x = self.activation(x)  # 激活函数
+        x = self.up_proj(x)  # 升维
+        x = x.permute(0, 3, 1, 2)
+        return x + residual  # 残差连接
+
+ 
+# ================================================================================    
+# LoRALayer实现
+class LoRALayer(nn.Module):
+    def __init__(self, in_features, out_features, rank=64):
+        super().__init__()
+        self.rank = rank
+        # 初始化低秩矩阵A和B
+            
+        self.A = nn.Parameter(torch.randn(in_features, rank))  # A的维度是 (in_features, rank)
+        self.B = nn.Parameter(torch.randn(rank, out_features))  # B的维度是 (rank, out_features)
+        # 冻结原始的权重矩阵
+        self.original_weight = nn.Parameter(torch.randn(in_features, out_features), requires_grad=False)
+
+    def forward(self, x):
+        x = x.permute(0, 2, 3, 1)
+        # 使用低秩矩阵进行线性变换
+        weight_new = self.original_weight + torch.matmul(self.A, self.B)
+        weight_new = weight_new.permute(1, 0)
+        x = F.linear(x, weight_new)  # 矩阵乘法是合法的
+        x = x.permute(0, 3, 1, 2)
+        return x
+
+
+# 修改后的Mlp类，包含LoRA微调
+class LoRAMlp(nn.Module):
+    def __init__(self, in_features, hidden_features=None, out_features=None, act_layer=nn.GELU, drop=0., channels_first=False, rank=64):
+        super().__init__()
+        out_features = out_features or in_features
+        hidden_features = hidden_features or in_features
+
+        Linear = LoRALayer  # 使用LoRALayer替代nn.Linear
+        self.fc1 = Linear(in_features, hidden_features, rank=rank)  # LoRA微调的第一层
+        self.act = act_layer()
+        self.fc2 = Linear(hidden_features, out_features, rank=rank)  # LoRA微调的第二层
+        self.drop = nn.Dropout(drop)
+
+    def forward(self, x):
+        x = self.fc1(x)
+        x = self.act(x)
+        x = self.drop(x)
+        x = self.fc2(x)
+        x = self.drop(x)
+        return x
+
+    
 # =====================================================
 class VSSBlock(nn.Module):
     def __init__(
@@ -1179,7 +1298,7 @@ class VSSBlock(nn.Module):
         use_checkpoint: bool = False,
         post_norm: bool = False,
         # =============================
-        _SS2D: type = SS2D,
+        _SS2D: type = SS2D,   #原始：SS2D
         **kwargs,
     ):
         super().__init__()
@@ -1217,13 +1336,18 @@ class VSSBlock(nn.Module):
         self.drop_path = DropPath(drop_path)
         
         if self.mlp_branch:
-            _MLP = Mlp if not gmlp else gMlp
+            _MLP = Mlp if not gmlp else gMlp   #原始VMamba
+            # _MLP = LoRAMlp if not gmlp else gMlp  #LoRA的linear层
             self.norm2 = norm_layer(hidden_dim)
             mlp_hidden_dim = int(hidden_dim * mlp_ratio)
             self.mlp = _MLP(in_features=hidden_dim, hidden_features=mlp_hidden_dim, act_layer=mlp_act_layer, drop=mlp_drop_rate, channels_first=channel_first)
-
+            
+        self.fitune = ASPP(hidden_dim, hidden_dim//4)
+        # self.fitune = Adapter(hidden_dim)
+        
     def _forward(self, input: torch.Tensor):
         x = input
+        x = self.fitune(x)
         if self.ssm_branch:
             if self.post_norm:
                 x = x + self.drop_path(self.norm(self.op(x)))
@@ -1364,7 +1488,7 @@ class VSSM(nn.Module):
             flatten=nn.Flatten(1),
             head=nn.Linear(self.num_features, num_classes),
         ))
-
+        
         self.apply(self._init_weights)
 
 
@@ -1499,7 +1623,6 @@ class VSSM(nn.Module):
         ))
 
     def forward(self, x: torch.Tensor):
-
         out_list = []
         x = self.patch_embed(x)
         out_list.append(x)
@@ -1635,11 +1758,6 @@ class Backbone_VSSM(VSSM):
         return outs
 
 
-
-
-
-
-
 # =====================================================
 def vmamba_tiny_s1l8(channel_first=True):
     net = VSSM(
@@ -1673,8 +1791,8 @@ def vmamba_small_s2l15(channel_first=True):
         downsample_version="v3", patchembed_version="v2",
         use_checkpoint=False, posembed=False, imgsize=320,
     )
-    pth = '/media/yuride/date/Mamba_SRDD/vssm_small_0229_ckpt_epoch_222.pth'
-    net.load_state_dict(torch.load(pth)['model'])
+    # pth = '/media/yuride/date/Mamba_SRDD/vssm_small_0229_ckpt_epoch_222.pth'
+    # net.load_state_dict(torch.load(pth)['model'])
     print('pretrain_loading !!!')
 
     return net
@@ -1692,8 +1810,8 @@ def vmamba_base_s2l15(channel_first=True):
         downsample_version="v3", patchembed_version="v2",
         use_checkpoint=False, posembed=False, imgsize=320,
     )
-    pth = '/media/yuride/date/Mamba_SRDD/VMamba_Pth/vmamba_base.pth'
-    net.load_state_dict(torch.load(pth)['model'], strict=False)
+    # pth = '/media/yuride/date/Mamba_SRDD/VMamba_Pth/vmamba_base.pth'
+    # net.load_state_dict(torch.load(pth)['model'], strict=False)
     print('pretrain_loading !!!')
 
     return net
@@ -1702,12 +1820,10 @@ def vmamba_base_s2l15(channel_first=True):
 
 if __name__ == "__main__":
     input = torch.randn(2, 3, 224, 224).cuda()
-    model_ref = vmamba_base_s2l15().cuda()
+    model_ref = vmamba_tiny_s1l8().cuda()
     out1, out2, out3, out4, out5 = model_ref(input)
     print('out1', out1.shape)
     print('out2', out2.shape)
     print('out3', out3.shape)
     print('out4', out4.shape)
     print('out5', out5.shape)
-
-
