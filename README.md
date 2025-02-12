@@ -90,10 +90,10 @@ Table IV Evaluation metrics obtained from compared methods. The best results are
 🎉🎉Fig. 9 shows the prediction results for the four ablation configurations. While the full model’s predictions do not perfectly align with the ground truth—which is expected—it provides the most accurate defect localization.
 
 🎉🎉For a more intuitive visualization of Depth Anything V2, please refer to the four line plots in Fig. 10.
-<img src="https://github.com/hjklearn/MambaRSDD/blob/main/ablation.png" width="700px">
+<img src="https://github.com/hjklearn/MambaRSDD/blob/main/fig8.png" width="700px">
 
 🎉🎉As shown in Table III, most methods exhibited a noticeable performance improvement.
-<img src="https://github.com/hjklearn/MambaRSDD/blob/main/Table3.png" width="420px">
+<img src="https://github.com/hjklearn/MambaRSDD/blob/main/loss.png" width="420px">
 
 ### 3.6 Validation MambaRSDD results on RGBD-RSDD.
 🎉🎉1.MambaRSDD weights are available:[MambaRSDD-RSDD-pth](https://pan.baidu.com/s/1P9rW7P5_-xSsfmOEuvPzew).By loading this weight, we can perform a performance test.
