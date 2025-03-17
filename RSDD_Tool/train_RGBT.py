@@ -108,25 +108,13 @@ for epoch in range(epochs):
         label = Variable(sample['label'].float().cuda())
 
         optimizer.zero_grad()
-        sal_finally, rgb_list, dep_list = net(image, depth)
+        sal_finally = net(image, depth)
         # sal_finally = net(image, depth)
 
         out1 = torch.sigmoid(sal_finally)
         loss1 = criterion1(out1, label) + IOU(out1, label)
 
-        loss_cilip = 0
-        for r, d in zip(rgb_list, dep_list):
-            b5, _, _, _, = r.shape
-            r5_sha = r.reshape(b5, -1)
-            d5_sha = d.reshape(b5, -1)
-            logits_5 = torch.matmul(r5_sha, d5_sha.T).cuda() # (B,B)
-            labels_5 = torch.arange(logits_5.shape[0]).cuda()  # (0,1,2,3)
-            loss_i5 = torch.nn.CrossEntropyLoss().cuda()(logits_5, labels_5)
-            loss_t5 = torch.nn.CrossEntropyLoss().cuda()(logits_5.T, labels_5)
-            clip_loss = (loss_i5 + loss_t5) / 2
-            loss_cilip = loss_cilip + clip_loss
-
-        loss_total = loss1 + loss_cilip
+        loss_total = loss1
 
         time = datetime.now()
 
@@ -149,7 +137,7 @@ for epoch in range(epochs):
             depthVal = Variable(sampleTest['depth'].cuda())
             labelVal = Variable(sampleTest['label'].float().cuda())
 
-            s1, rgb_list, dep_list = net(imageVal, depthVal)
+            s1 = net(imageVal, depthVal)
             # s1 = net(imageVal, depthVal)
             mask = torch.sigmoid(s1)
             loss = criterion_val(mask, labelVal)
